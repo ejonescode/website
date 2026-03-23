@@ -532,7 +532,7 @@
       <p class="section-desc">Whether you're an individual looking for coaching or an organization that needs development solutions, let's start with a conversation. No pressure, no pitch.</p>
       <div class="contact-detail">
         <div class="contact-icon">&#9993;</div>
-        <span>ethan@jonescareer.com</span>
+        <span>jones.career.consulting@gmail.com</span>
       </div>
       <div class="contact-detail">
         <div class="contact-icon">&#128205;</div>
@@ -540,38 +540,40 @@
       </div>
     </div>
     <div class="contact-form reveal" id="contactForm">
+      <form action="https://formspree.io/f/xojkgjlp" method="POST" id="contactFormEl">
       <div class="form-row">
         <div class="form-group">
           <label>First Name</label>
-          <input type="text" placeholder="Jane">
+          <input type="text" name="first_name" placeholder="Jane" required>
         </div>
         <div class="form-group">
           <label>Last Name</label>
-          <input type="text" placeholder="Smith">
+          <input type="text" name="last_name" placeholder="Smith" required>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
           <label>Email</label>
-          <input type="email" placeholder="you@email.com">
+          <input type="email" name="email" placeholder="you@email.com" required>
         </div>
         <div class="form-group">
           <label>Interested In</label>
-          <select>
+          <select name="service">
             <option value="">Select a service</option>
-            <option>Career Coaching</option>
-            <option>L&amp;D Consulting</option>
-            <option>AI Enablement</option>
+            <option>AI Career Readiness Coaching</option>
+            <option>Career Coaching / Job Search Coaching</option>
             <option>Workshops &amp; Facilitation</option>
+            <option>Hourly Consulting</option>
             <option>Not sure yet</option>
           </select>
         </div>
       </div>
       <div class="form-group full">
         <label>Tell me about your situation</label>
-        <textarea placeholder="What's going on and how can I help?"></textarea>
+        <textarea name="message" placeholder="What's going on and how can I help?"></textarea>
       </div>
-      <button class="btn-primary form-submit" onclick="submitForm()">Send Message</button>
+      <button type="submit" class="btn-primary form-submit">Send Message</button>
+      </form>
     </div>
   </div>
 </section>
@@ -605,10 +607,28 @@
   }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-  // Form
-  function submitForm() {
-    document.getElementById('contactForm').innerHTML =
-      '<div class="form-success"><div class="check">&#10003;</div><h3>Message sent!</h3><p>I\'ll get back to you within 24 hours.</p></div>';
+  // Form - Formspree async submission
+  const form = document.getElementById('contactFormEl');
+  if (form) {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const data = new FormData(form);
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          document.getElementById('contactForm').innerHTML =
+            '<div class="form-success"><div class="check">&#10003;</div><h3>Message sent!</h3><p>I\'ll get back to you within 24 hours.</p></div>';
+        } else {
+          alert('Something went wrong. Please try again or email me directly.');
+        }
+      } catch (err) {
+        alert('Something went wrong. Please try again or email me directly.');
+      }
+    });
   }
 </script>
 
