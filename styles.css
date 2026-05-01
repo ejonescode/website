@@ -360,13 +360,13 @@ nav.scrolled .nav-brand-tagline { display: none; }
 .testimonials-header { max-width: 1200px; margin: 0 auto 48px; }
 
 /* ---- TESTIMONIAL SLIDER ---- */
-.slider-wrap { max-width: 1200px; margin: 0 auto; position: relative; }
-.slider-track { overflow: hidden; }
+.slider-wrap { max-width: 1100px; margin: 0 auto; position: relative; }
+.slider-track { overflow: hidden; padding: 6px 4px; }
 .slider-inner {
   display: flex;
   transition: transform 0.55s cubic-bezier(0.16,1,0.3,1);
   align-items: stretch;
-  gap: 24px;
+  gap: 32px;
 }
 .test-card {
   background: #fff;
