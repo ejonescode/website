@@ -28,7 +28,7 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
   const dotsWrap = document.getElementById('sliderDots');
   if (!inner || !dotsWrap) return;
   const cards = Array.from(inner.querySelectorAll('.test-card'));
-  const GAP = 24;
+  const GAP = 32;
   let current = 0;
   let visibleCount = 3;
   let autoTimer;
