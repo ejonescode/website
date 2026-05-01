@@ -845,3 +845,160 @@ footer {
     padding: 70px 24px;
   }
 }
+/* ============================================
+   TESTIMONIAL SLIDER (shared across pages)
+   Replaces the older static .testimonials-grid
+   ============================================ */
+
+.slider-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+.slider-track { overflow: hidden; }
+.slider-inner {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
+  align-items: flex-start;
+  gap: 24px;
+}
+
+/* Override the older .test-card to work as a slider card */
+.test-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 44px 44px 36px;
+  position: relative;
+  flex-shrink: 0;
+  box-shadow: 0 8px 32px rgba(27,58,107,0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+.test-card .quote-mark {
+  font-family: var(--serif);
+  font-size: 80px;
+  color: var(--accent);
+  opacity: 0.08;
+  line-height: 1;
+  position: absolute;
+  top: 20px;
+  left: 32px;
+}
+.test-card p {
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.8;
+  color: var(--text);
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+  flex-grow: 1;
+}
+.test-card[data-size="lg"] p { font-size: 19px; line-height: 1.75; }
+.test-card[data-size="md"] p { font-size: 17px; line-height: 1.8; }
+.test-author {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+}
+.test-role {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* Slider controls (arrows + dots) */
+.slider-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+.slider-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: var(--navy);
+  box-shadow: 0 2px 8px rgba(27,58,107,0.08);
+}
+.slider-btn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  transform: translateY(-1px);
+}
+.slider-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.slider-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.slider-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  padding: 0;
+}
+.slider-dot.active {
+  background: var(--accent);
+  transform: scale(1.3);
+}
+
+/* ============================================
+   FAITH-PAGE ABOUT-LIST
+   (page-specific bulleted list in About section)
+   ============================================ */
+.about-list-intro {
+  font-size: 15px !important;
+  color: rgba(255,255,255,0.55) !important;
+  margin-top: 4px;
+}
+.about-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px 0;
+}
+.about-list li {
+  font-size: 15px;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.65);
+  padding: 6px 0 6px 20px;
+  position: relative;
+}
+.about-list .bullet {
+  position: absolute;
+  left: 0;
+  color: var(--blue-light);
+}
+
+/* ---- RESPONSIVE: slider mobile ---- */
+@media (max-width: 900px) {
+  .test-card {
+    flex: 0 0 100%;
+    margin-left: 0 !important;
+  }
+  .test-card + .test-card { margin-left: 0; }
+}
