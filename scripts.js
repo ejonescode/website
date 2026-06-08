@@ -80,7 +80,7 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
     clearInterval(autoTimer);
     autoTimer = setInterval(() => {
       goTo(current < maxStep() ? current + 1 : 0);
-    }, 6000);
+    }, 10000);
   }
 
   function init() {
